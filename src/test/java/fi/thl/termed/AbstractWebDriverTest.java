@@ -33,12 +33,12 @@ public abstract class AbstractWebDriverTest {
     options.addArguments("--headless");
     options.addArguments("--disable-gpu");
 
-    String protocol = properties.getProperty("protocol", "http");
-    String username = properties.getProperty("username", "admin");
-    String password = properties.getProperty("password", "admin");
-    String host = properties.getProperty("host", "localhost");
-    String port = properties.getProperty("port", "8000");
-    String path = properties.getProperty("path", "/");
+    String protocol = properties.getProperty("termed.protocol", "http");
+    String username = properties.getProperty("termed.username", "admin");
+    String password = properties.getProperty("termed.password", "admin");
+    String host = properties.getProperty("termed.host", "localhost");
+    String port = properties.getProperty("termed.port", "8000");
+    String path = properties.getProperty("termed.path", "/");
 
     String url = protocol + "://" + username + ":" + password + "@" + host + ":" + port + (
         path.startsWith("/") ? "" : "/") + path;
