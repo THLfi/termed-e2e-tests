@@ -2,7 +2,7 @@
 
 Termed is a web-based vocabulary and metadata editor. 
 
-This contains end to end tests for Termed UI.
+This project contains end-to-end tests for Termed (API + UI).
 
 ## Running
 
@@ -18,10 +18,10 @@ To configure different host, user etc., edit:
 ```
 with config like:
 ```
-termed.protocol = http
-termed.username = e2e-tester
-termed.password = M3Tb2fttM4KFwMk2
-termed.host = <my-domain>
-termed.port = 8810
-termed.path = /termed
+termed.protocol=http
+termed.username=e2e-tester
+termed.password=...
+termed.host=<my-domain>
+termed.port=8810
+termed.path=/termed
 ```
