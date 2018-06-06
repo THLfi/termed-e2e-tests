@@ -10,7 +10,7 @@ mvn test
 
 ## Configurations
 
-By default, tests are run agains local Termed instance running on `http://localhost:8000/` with default username and password.
+By default, tests are run against local Termed instance running on `http://localhost:8000/` with default username and password.
 
 To configure different host, user etc., edit:
 ```
