@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-class GraphListPage extends AbstractPage {
+class GraphListPage extends AbstractAngularPage {
 
   @FindBy(tagName = "h1")
   private WebElement title;

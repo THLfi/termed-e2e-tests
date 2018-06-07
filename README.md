@@ -8,20 +8,17 @@ This project contains end-to-end tests for Termed (API + UI).
 
 mvn test
 
-## Configurations
+## Configuration
 
-By default, tests are run against local Termed instance running on `http://localhost:8000/` with default username and password.
+By default, tests are run against local Termed instance running on `http://localhost:8000/`
+with default username and password.
 
-To configure different host, user etc., edit:
+To configure different host, user etc., following system properties are supported:
 ```
-/src/test/resources/test.properties
-```
-with config like:
-```
-termed.protocol=http
-termed.username=e2e-tester
-termed.password=...
-termed.host=<my-domain>
-termed.port=8810
-termed.path=/termed
+termed.protocol
+termed.username
+termed.password
+termed.host
+termed.port
+termed.path
 ```
