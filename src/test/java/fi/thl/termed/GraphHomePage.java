@@ -1,7 +1,5 @@
 package fi.thl.termed;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +13,7 @@ class GraphHomePage extends AbstractAngularPage {
   private WebElement breadcrumbFirstLink;
 
   GraphHomePage(WebDriver driver) {
-    super(driver);
+    super(driver, ".*/graphs/" + RegularExpressions.UUID + "/nodes(\\?.*)?$");
   }
 
   public String getTitleText() {
@@ -24,7 +22,6 @@ class GraphHomePage extends AbstractAngularPage {
 
   public GraphListPage clickFirstLinkInBreadcrumb() {
     breadcrumbFirstLink.click();
-    waitUntil(urlMatches(".*/graphs/$"));
     return new GraphListPage(driver);
   }
 }

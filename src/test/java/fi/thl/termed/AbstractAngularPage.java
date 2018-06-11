@@ -1,6 +1,7 @@
 package fi.thl.termed;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
+import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
 import java.util.function.Function;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,9 +12,13 @@ abstract class AbstractAngularPage {
 
   WebDriver driver;
 
-  AbstractAngularPage(WebDriver driver) {
+  private String urlRegexPattern;
+
+  AbstractAngularPage(WebDriver driver, String urlRegexPattern) {
     this.driver = driver;
+    this.urlRegexPattern = urlRegexPattern;
     initElements(driver, this);
+    waitForUrlChanged();
     waitForPageReady();
     waitForAngularReady();
   }
@@ -22,7 +27,11 @@ abstract class AbstractAngularPage {
     new WebDriverWait(driver, 30).until(isTrue);
   }
 
-  void waitForPageReady() {
+  private void waitForUrlChanged() {
+    waitUntil(urlMatches(urlRegexPattern));
+  }
+
+  private void waitForPageReady() {
     waitUntil(d -> ((JavascriptExecutor) d)
         .executeScript("return document.readyState === 'complete'")
         .equals(true));

@@ -1,7 +1,6 @@
 package fi.thl.termed;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +23,7 @@ class GraphEditPage extends AbstractAngularPage {
   private WebElement graphLabel;
 
   GraphEditPage(WebDriver driver) {
-    super(driver);
+    super(driver, ".*/graphs/" + RegularExpressions.UUID + "/edit(\\?.*)?$");
   }
 
   public String getTitleText() {
@@ -39,13 +38,11 @@ class GraphEditPage extends AbstractAngularPage {
 
   public GraphHomePage clickSave() {
     save.click();
-    waitUntil(urlMatches(".*/graphs/" + RegularExpressions.UUID + "/nodes(\\?.*)?$"));
     return new GraphHomePage(driver);
   }
 
   public GraphListPage clickRemove() {
     remove.click();
-    waitUntil(urlMatches(".*/graphs/$"));
     return new GraphListPage(driver);
   }
 

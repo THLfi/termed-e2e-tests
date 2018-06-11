@@ -1,7 +1,5 @@
 package fi.thl.termed;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
@@ -18,7 +16,7 @@ class GraphListPage extends AbstractAngularPage {
   private WebElement newGraph;
 
   GraphListPage(WebDriver driver) {
-    super(driver);
+    super(driver, ".*/graphs/?(\\?.*)?$");
   }
 
   public String getTitleText() {
@@ -36,7 +34,6 @@ class GraphListPage extends AbstractAngularPage {
 
   public GraphEditPage clickNewGraph() {
     newGraph.click();
-    waitUntil(urlMatches(".*/graphs/" + RegularExpressions.UUID + "/edit$"));
     return new GraphEditPage(driver);
   }
 
@@ -47,9 +44,6 @@ class GraphListPage extends AbstractAngularPage {
         .findElement(By.cssSelector("span.glyphicon.glyphicon-edit"))
         .findElement(By.xpath(".."))
         .click();
-
-    waitUntil(urlMatches(".*/graphs/" + RegularExpressions.UUID + "/edit$"));
-
     return new GraphEditPage(driver);
   }
 
