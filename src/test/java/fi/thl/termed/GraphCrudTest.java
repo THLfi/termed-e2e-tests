@@ -19,7 +19,7 @@ public class GraphCrudTest extends AbstractWebDriverTest {
     graphEditPage.setGraphLabel(testGraphLabel);
 
     GraphHomePage graphHomePage = graphEditPage.clickSave();
-    assertEquals(testGraphLabel, graphHomePage.getTitleText());
+    assertEquals(testGraphLabel, graphHomePage.getHeadingText());
 
     graphListPage = graphHomePage.clickFirstLinkInBreadcrumb();
     assertTrue(graphListPage.getGraphNames().contains(testGraphLabel));

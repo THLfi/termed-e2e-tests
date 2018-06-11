@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 class GraphHomePage extends AbstractAngularPage {
 
   @FindBy(tagName = "h1")
-  private WebElement title;
+  private WebElement heading;
 
   @FindBy(css = "ol.breadcrumb li:first-child a")
   private WebElement breadcrumbFirstLink;
@@ -16,8 +16,8 @@ class GraphHomePage extends AbstractAngularPage {
     super(driver, ".*/graphs/" + RegularExpressions.UUID + "/nodes(\\?.*)?$");
   }
 
-  public String getTitleText() {
-    return title.getText();
+  public String getHeadingText() {
+    return heading.getText();
   }
 
   public GraphListPage clickFirstLinkInBreadcrumb() {

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 class GraphEditPage extends AbstractAngularPage {
 
   @FindBy(tagName = "h1")
-  private WebElement title;
+  private WebElement heading;
 
   @FindBy(css = "button[ng-click='save()']")
   private WebElement save;
@@ -26,8 +26,8 @@ class GraphEditPage extends AbstractAngularPage {
     super(driver, ".*/graphs/" + RegularExpressions.UUID + "/edit(\\?.*)?$");
   }
 
-  public String getTitleText() {
-    return title.getText();
+  public String getHeadingText() {
+    return heading.getText();
   }
 
   public void setGraphLabel(String label) {

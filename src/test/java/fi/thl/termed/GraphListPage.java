@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 class GraphListPage extends AbstractAngularPage {
 
   @FindBy(tagName = "h1")
-  private WebElement title;
+  private WebElement heading;
 
   @FindBy(css = "button[ng-click='newGraph()']")
   private WebElement newGraph;
@@ -19,8 +19,8 @@ class GraphListPage extends AbstractAngularPage {
     super(driver, ".*/graphs/?(\\?.*)?$");
   }
 
-  public String getTitleText() {
-    return title.getText();
+  public String getHeadingText() {
+    return heading.getText();
   }
 
   public Set<String> getGraphNames() {
