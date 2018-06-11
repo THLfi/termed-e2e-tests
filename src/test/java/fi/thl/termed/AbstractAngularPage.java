@@ -18,7 +18,7 @@ abstract class AbstractAngularPage {
     this.driver = driver;
     this.urlRegexPattern = urlRegexPattern;
     initElements(driver, this);
-    waitForUrlChanged();
+    waitForUrlChange();
     waitForPageReady();
     waitForAngularReady();
   }
@@ -27,7 +27,7 @@ abstract class AbstractAngularPage {
     new WebDriverWait(driver, 30).until(isTrue);
   }
 
-  private void waitForUrlChanged() {
+  private void waitForUrlChange() {
     waitUntil(urlMatches(urlRegexPattern));
   }
 
