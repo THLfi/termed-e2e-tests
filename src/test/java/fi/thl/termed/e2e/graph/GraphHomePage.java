@@ -1,5 +1,7 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e.graph;
 
+import fi.thl.termed.e2e.AbstractAngularPage;
+import fi.thl.termed.e2e.RegularExpressions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,4 +26,5 @@ class GraphHomePage extends AbstractAngularPage {
     breadcrumbFirstLink.click();
     return new GraphListPage(driver);
   }
+
 }

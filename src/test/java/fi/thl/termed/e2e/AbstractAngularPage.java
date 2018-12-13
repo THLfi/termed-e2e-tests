@@ -1,4 +1,4 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
@@ -9,13 +9,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-abstract class AbstractAngularPage {
+public abstract class AbstractAngularPage {
 
-  WebDriver driver;
+  protected WebDriver driver;
 
   private String urlRegexPattern;
 
-  AbstractAngularPage(WebDriver driver, String urlRegexPattern) {
+  protected AbstractAngularPage(WebDriver driver, String urlRegexPattern) {
     this.driver = Objects.requireNonNull(driver);
     this.urlRegexPattern = Objects.requireNonNull(urlRegexPattern);
     initElements(driver, this);
@@ -24,7 +24,7 @@ abstract class AbstractAngularPage {
     waitForAngularReady();
   }
 
-  <V> void waitUntil(Function<? super WebDriver, V> isTrue) {
+  protected <V> void waitUntil(Function<? super WebDriver, V> isTrue) {
     new WebDriverWait(driver, 20).until(isTrue);
   }
 

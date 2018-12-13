@@ -1,7 +1,9 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e.graph;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
+import fi.thl.termed.e2e.AbstractAngularPage;
+import fi.thl.termed.e2e.RegularExpressions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

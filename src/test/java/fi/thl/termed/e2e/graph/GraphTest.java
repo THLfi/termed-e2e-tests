@@ -1,15 +1,16 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e.graph;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import fi.thl.termed.e2e.AbstractWebDriverTest;
 import java.util.UUID;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-class GraphCrudTest extends AbstractWebDriverTest {
+class GraphTest extends AbstractWebDriverTest {
 
   private String testGraphLabel = "Test Graph " + UUID.randomUUID();
 

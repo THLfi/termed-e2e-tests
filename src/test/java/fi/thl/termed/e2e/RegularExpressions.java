@@ -1,8 +1,8 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e;
 
-final class RegularExpressions {
+public final class RegularExpressions {
 
-  static final String UUID =
+  public static final String UUID =
       "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 
   private RegularExpressions() {

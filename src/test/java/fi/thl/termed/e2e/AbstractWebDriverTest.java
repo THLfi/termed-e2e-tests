@@ -1,4 +1,6 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e;
+
+import static fi.thl.termed.e2e.StringUtils.ensureLeadingSlash;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
@@ -15,9 +17,9 @@ import org.slf4j.LoggerFactory;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)
-abstract class AbstractWebDriverTest {
+public abstract class AbstractWebDriverTest {
 
-  WebDriver driver;
+  protected WebDriver driver;
 
   private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -42,10 +44,6 @@ abstract class AbstractWebDriverTest {
 
     driver = new ChromeDriver(options);
     driver.get(url);
-  }
-
-  private String ensureLeadingSlash(String str) {
-    return (str.startsWith("/") ? "" : "/") + str;
   }
 
   @AfterAll

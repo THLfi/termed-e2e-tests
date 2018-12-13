@@ -1,5 +1,6 @@
-package fi.thl.termed;
+package fi.thl.termed.e2e.graph;
 
+import fi.thl.termed.e2e.AbstractAngularPage;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
