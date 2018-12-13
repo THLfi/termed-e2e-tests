@@ -10,7 +10,10 @@ import java.util.UUID;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-class GraphTest extends AbstractWebDriverTest {
+/**
+ * Tests simple CRUD operations on graph.
+ */
+class GraphCrudTest extends AbstractWebDriverTest {
 
   private String testGraphLabel = "Test Graph " + UUID.randomUUID();
 

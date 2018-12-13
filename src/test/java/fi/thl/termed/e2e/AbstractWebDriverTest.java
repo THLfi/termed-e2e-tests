@@ -15,6 +15,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Abstract superclass for web driver based Termed UI tests.
+ *
+ * Reads Termed connection properties form system properties (environment variables). Supported
+ * properties are:
+ *
+ * <ul>
+ * <li>termed.protocol</li>
+ * <li>termed.username</li>
+ * <li>termed.password</li>
+ * <li>termed.host</li>
+ * <li>termed.port</li>
+ * <li>termed.path</li>
+ * </ul>
+ */
 @TestInstance(Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)
 public abstract class AbstractWebDriverTest {

@@ -9,6 +9,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Abstract superclass for Angular "page objects".
+ *
+ * On construction, validates that URL is changed to expected and waits for Angular to be ready.
+ */
 public abstract class AbstractAngularPage {
 
   protected WebDriver driver;
