@@ -16,11 +16,11 @@ class GraphHomePage extends AbstractAngularPage {
     super(driver, ".*/graphs/" + RegularExpressions.UUID + "/nodes(\\?.*)?$");
   }
 
-  public String getHeadingText() {
+  String getHeadingText() {
     return heading.getText();
   }
 
-  public GraphListPage clickFirstLinkInBreadcrumb() {
+  GraphListPage clickFirstLinkInBreadcrumb() {
     breadcrumbFirstLink.click();
     return new GraphListPage(driver);
   }

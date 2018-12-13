@@ -19,11 +19,11 @@ class GraphListPage extends AbstractAngularPage {
     super(driver, ".*/graphs/?(\\?.*)?$");
   }
 
-  public String getHeadingText() {
+  String getHeadingText() {
     return heading.getText();
   }
 
-  public Set<String> getGraphNames() {
+  Set<String> getGraphNames() {
     return driver.findElements(
         By.cssSelector(
             "tr[ng-repeat='graph in graphs | filter:graphQuery | orderBy:localizedPrefLabel'] a"))
@@ -32,12 +32,12 @@ class GraphListPage extends AbstractAngularPage {
         .collect(Collectors.toSet());
   }
 
-  public GraphEditPage clickNewGraph() {
+  GraphEditPage clickNewGraph() {
     newGraph.click();
     return new GraphEditPage(driver);
   }
 
-  public GraphEditPage clickEditGraphWithLabel(String graphLabel) {
+  GraphEditPage clickEditGraphWithLabel(String graphLabel) {
     driver
         .findElement(By.linkText(graphLabel))
         .findElement(By.xpath("../.."))

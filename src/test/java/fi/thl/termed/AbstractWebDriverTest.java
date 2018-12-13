@@ -1,28 +1,30 @@
 package fi.thl.termed;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractWebDriverTest {
-
-  Logger log = LoggerFactory.getLogger(getClass());
+@TestInstance(Lifecycle.PER_CLASS)
+@TestMethodOrder(OrderAnnotation.class)
+abstract class AbstractWebDriverTest {
 
   WebDriver driver;
 
-  @BeforeClass
-  public static void initWebDriverManager() {
-    WebDriverManager.chromedriver().setup();
-  }
+  private Logger log = LoggerFactory.getLogger(getClass());
 
-  @Before
-  public void initWebDriver() {
+  @BeforeAll
+  void initWebDriver() {
+    WebDriverManager.chromedriver().setup();
+
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
     options.addArguments("--disable-gpu");
@@ -46,8 +48,8 @@ public abstract class AbstractWebDriverTest {
     return (str.startsWith("/") ? "" : "/") + str;
   }
 
-  @After
-  public void quitWebDriver() {
+  @AfterAll
+  void quitWebDriver() {
     driver.quit();
   }
 

@@ -1,30 +1,46 @@
 package fi.thl.termed;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
-import org.junit.Test;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
-public class GraphCrudTest extends AbstractWebDriverTest {
+class GraphCrudTest extends AbstractWebDriverTest {
+
+  private String testGraphLabel = "Test Graph " + UUID.randomUUID();
 
   @Test
-  public void shouldCreateUpdateAndDeleteMinimalGraph() {
-    String testGraphLabel = "Test Graph " + UUID.randomUUID();
-
+  @Order(1)
+  void shouldCreateGraph() {
     GraphListPage graphListPage = new GraphListPage(driver);
 
     GraphEditPage graphEditPage = graphListPage.clickNewGraph();
-    graphEditPage.setGraphLabel(testGraphLabel);
+    assertNotNull(graphEditPage);
+  }
 
+  @Test
+  @Order(2)
+  void shouldUpdateGraph() {
+    GraphEditPage graphEditPage = new GraphEditPage(driver);
+
+    graphEditPage.setGraphLabel(testGraphLabel);
     GraphHomePage graphHomePage = graphEditPage.clickSave();
     assertEquals(testGraphLabel, graphHomePage.getHeadingText());
+  }
 
-    graphListPage = graphHomePage.clickFirstLinkInBreadcrumb();
+  @Test
+  @Order(3)
+  void shouldDeleteGraph() {
+    GraphHomePage graphHomePage = new GraphHomePage(driver);
+
+    GraphListPage graphListPage = graphHomePage.clickFirstLinkInBreadcrumb();
     assertTrue(graphListPage.getGraphNames().contains(testGraphLabel));
 
-    graphEditPage = graphListPage.clickEditGraphWithLabel(testGraphLabel);
+    GraphEditPage graphEditPage = graphListPage.clickEditGraphWithLabel(testGraphLabel);
 
     graphListPage = graphEditPage.clickRemove();
     assertFalse(graphListPage.getGraphNames().contains(testGraphLabel));

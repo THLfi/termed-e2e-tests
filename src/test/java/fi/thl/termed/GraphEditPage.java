@@ -26,22 +26,22 @@ class GraphEditPage extends AbstractAngularPage {
     super(driver, ".*/graphs/" + RegularExpressions.UUID + "/edit(\\?.*)?$");
   }
 
-  public String getHeadingText() {
+  String getHeadingText() {
     return heading.getText();
   }
 
-  public void setGraphLabel(String label) {
+  void setGraphLabel(String label) {
     graphLabel.clear();
     graphLabel.sendKeys(label);
     waitUntil(textToBe(By.tagName("h1"), label));
   }
 
-  public GraphHomePage clickSave() {
+  GraphHomePage clickSave() {
     save.click();
     return new GraphHomePage(driver);
   }
 
-  public GraphListPage clickRemove() {
+  GraphListPage clickRemove() {
     remove.click();
     return new GraphListPage(driver);
   }
